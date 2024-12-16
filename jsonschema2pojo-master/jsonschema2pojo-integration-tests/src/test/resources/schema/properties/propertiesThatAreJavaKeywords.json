@@ -1,0 +1,23 @@
+{
+    "type" : "object",
+    "properties" : {
+        "public" : {
+            "type" : "string"
+        },
+        "void" : {
+            "type" : "string"
+        },
+        "enum" : {
+            "type" : "string"
+        },
+        "abstract" : {
+            "type" : "string"
+        },
+        "_" : {
+            "type" : "string"
+        },
+        "" : {
+            "type" : "string"
+        }
+    }
+}

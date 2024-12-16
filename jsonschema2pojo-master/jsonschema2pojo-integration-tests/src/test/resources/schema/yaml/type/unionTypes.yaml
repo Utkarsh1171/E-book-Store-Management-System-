@@ -1,0 +1,16 @@
+properties:
+  nullProperty:
+    type:
+    - 'null'
+  integerProperty:
+    type:
+    - integer
+    - 'null'
+  stringProperty:
+    type:
+    - string
+  booleanProperty:
+    type:
+    - 'null'
+    - boolean
+type: object

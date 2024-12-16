@@ -1,0 +1,98 @@
+@user-id = 65d32dc5c8b0fe438ead281c
+@task-id = 64a71d1ceb024644ef23845a
+@jwt-token = 65ccbc8073a88f52cea10b15
+
+
+### create user
+POST http://localhost:8080/api/users
+accept: application/json
+content-type: application/json
+
+{
+
+    "firstName" : "oussama",
+    "lastName" : "zerouali",
+    "email" :"oussamatest@gmail.com",
+    "authorized" : false,
+    "password" : "password",
+    "status" : "ACTIF"
+}
+
+### login user
+POST http://localhost:8080/api/users/login
+accept: application/json
+content-type: application/json
+
+{
+
+    "email" :"oussamatest@gmail.com",
+    "password" : "password" 
+}
+
+### logout user
+POST http://localhost:8080/api/users/logout/{{jwt-token}}
+Authorization: Bearer your-JWT-Token
+accept: application/json
+content-type: application/json
+
+
+### create a task for the user
+POST http://localhost:8080/api/users/{{user-id}}/tasks
+Authorization: Bearer your-JWT-Token
+accept: application/json
+content-type: application/json
+
+{
+    "description" :"new description test test",
+    "complete" : false,
+    "title" : "new new title",
+    "startDate" : "2023-07-06",
+    "endDate" : "2025-12-06"
+}
+
+### get the details of the user task
+GET http://localhost:8080/api/users/{{user-id}}/tasks/{{task-id}}
+Authorization: Bearer your-JWT-Token
+
+
+### get all the tasks of an user
+GET http://localhost:8080/api/users/{{user-id}}/tasks
+Authorization: Bearer your-JWT-Token
+
+
+### update the user task
+PUT http://localhost:8080/api/users/{{user-id}}/tasks/{{task-id}}
+Authorization: Bearer your-JWT-Token
+accept: application/json
+content-type: application/json
+
+{
+    "description" :"how how how how",
+    "complete" : false,
+    "title" : "new new title",
+    "startDate" : "2023-07-06",
+    "endDate" : "2025-12-06"
+}
+
+
+### delete the user task
+http://localhost:8080/api/users/{{user-id}}/tasks/{{task-id}}
+Authorization: Bearer your-JWT-Token
+
+
+### delete all the user tasks
+DELETE http://localhost:8080/api/users/{{user-id}}/tasks
+Authorization: Bearer your-JWT-Token
+
+### download user tasks report
+GET http://localhost:8080/api/users/{{user-id}}/tasks/report
+Authorization: Bearer your-JWT-Token
+
+### get user details by email
+GET http://localhost:8080/api/users?email=email@email.com
+Authorization: Bearer your-JWT-Token
+
+### download webFlux report
+GET http://localhost:8080/api/users/tasks/web-flux-report
+Accept: application/octet-stream
+Authorization: Bearer your-JWT-Token
